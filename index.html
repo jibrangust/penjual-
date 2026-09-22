@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Business Battle - Penjual</title>
+
+<style>
+
+/* =========================
+   DASAR
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#bde9ff, #eef9ff);
+    color: #263238;
+    min-height: 100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    background: #202a44;
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.header-info {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    background: rgba(255,255,255,.12);
+    padding: 8px 13px;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+/* =========================
+   NAVIGASI
+========================= */
+
+.nav-web {
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.nav-web a {
+    text-decoration: none;
+}
+
+.nav-web button {
+    border: none;
+    padding: 9px 15px;
+    border-radius: 12px;
+    background: #ececff;
+    color: #4038a8;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-web button:hover {
+    background: #dcd9ff;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer-area {
+    width: 94%;
+    max-width: 1200px;
+    margin: 18px auto;
+    background: white;
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 5px 18px rgba(0,0,0,.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.timer-title {
+    font-weight: bold;
+}
+
+.timer {
+    font-size: 30px;
+    font-weight: bold;
+    color: #2f5bea;
+}
+
+.status {
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* =========================
+   MARKET
+========================= */
+
+.market {
+    width: 94%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.market-title {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 25px;
+}
+
+/* =========================
+   TOKO
+========================= */
+
+.shop {
+    background: #fff;
+    border-radius: 22px;
+    padding: 20px;
+    box-shadow: 0 7px 20px rgba(0,0,0,.13);
+    margin-bottom: 20px;
+}
+
+.shop-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.shop-name {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.reputation {
+    background: #fff4c7;
+    padding: 8px 13px;
+    border-radius: 12px;
+}
+
+/* =========================
+   PRODUK
+========================= */
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.product {
+    border: 2px solid #edf0f5;
+    border-radius: 18px;
+    padding: 17px;
+    background: #fafcff;
+}
+
+.product-icon {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.product h3 {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.product-info {
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.product button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.main-btn {
+    background: #4f46e5;
+    color: white;
+    padding: 11px;
+    border-radius: 11px;
+}
+
+.main-btn:hover {
+    background: #3730a3;
+    transform: translateY(-2px);
+}
+
+.green-btn {
+    background: #16a34a;
+    color: white;
+    padding: 11px;
+    border-radius: 11px;
+}
+
+.orange-btn {
+    background: #f59e0b;
+    color: white;
+    padding: 11px;
+    border-radius: 11px;
+}
+
+/* =========================
+   SUPPLIER
+========================= */
+
+.supplier-section {
+    margin-top: 20px;
+    background: #f6f8ff;
+    border-radius: 18px;
+    padding: 18px;
+}
+
+.supplier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.supplier-current {
+    background: #e0e7ff;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+.suppliers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.supplier {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 13px;
+}
+
+.supplier.active {
+    border-color: #4f46e5;
+    background: #f0efff;
+}
+
+.supplier h4 {
+    margin-bottom: 8px;
+}
+
+.supplier p {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.supplier button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 9px;
+    border-radius: 9px;
+    background: #4f46e5;
+    color: white;
+}
+
+/* =========================
+   BAHAN BAKU
+========================= */
+
+.inventory {
+    margin-top: 20px;
+}
+
+.inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 11px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+
+.inventory-table th {
+    background: #202a44;
+    color: white;
+}
+
+/* =========================
+   EVENT
+========================= */
+
+.event-box {
+    background: #fff;
+    margin-top: 20px;
+    border-left: 6px solid #f59e0b;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+
+.event-box h3 {
+    margin-bottom: 6px;
+}
+
+/* =========================
+   NOTIFIKASI
+========================= */
+
+.notification {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #202a44;
+    color: white;
+    padding: 15px 18px;
+    border-radius: 14px;
+    box-shadow: 0 7px 20px rgba(0,0,0,.25);
+    display: none;
+    z-index: 999;
+}
+
+/* =========================
+   MODAL SUPPLIER
+========================= */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 750px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.modal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.close-btn {
+    background: #ef4444;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 9px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:600px) {
+
+    .timer {
+        font-size: 25px;
+    }
+
+    .shop-name {
+        font-size: 21px;
+    }
+
+    .inventory-table {
+        font-size: 12px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<div class="header">
+
+    <div class="logo">
+        🎮 BUSINESS BATTLE
+    </div>
+
+    <div class="header-info">
+
+        <div class="info-box">
+            💰 Saldo:
+            <b id="saldo">Rp10.000.000</b>
+        </div>
+
+        <div class="info-box">
+            📦 Stok:
+            <b id="totalStock">0</b>
+        </div>
+
+        <div class="info-box">
+            ⭐ Reputasi:
+            <b id="reputasi">50</b>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     NAVIGASI
+========================= -->
+
+<div class="nav-web">
+
+    <a href="admin.html">
+        <button>⚙️ ADMIN</button>
+    </a>
+
+    <a href="penjual.html">
+        <button>🏪 PENJUAL</button>
+    </a>
+
+    <a href="pembeli.html">
+        <button>🛒 PEMBELI</button>
+    </a>
+
+</div>
+
+
+<!-- =========================
+     TIMER ADMIN
+========================= -->
+
+<div class="timer-area">
+
+    <div>
+        <div class="timer-title">
+            ⏱️ WAKTU PERMAINAN
+        </div>
+
+        <small>
+            Timer dikendalikan oleh Admin
+        </small>
+    </div>
+
+    <div class="timer" id="timer">
+        06:00
+    </div>
+
+    <div class="status" id="gameStatus">
+        ⏸️ MENUNGGU ADMIN
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MARKET
+========================= -->
+
+<div class="market">
+
+    <h1 class="market-title">
+        🏪 TOKO KAMU
+    </h1>
+
+
+    <div class="shop">
+
+        <div class="shop-top">
+
+            <div class="shop-name">
+                ☕ Toko Kelompok 1
+            </div>
+
+            <div class="reputation">
+                ⭐ Reputasi: <b id="reputasi2">50</b>/100
+            </div>
+
+        </div>
+
+
+        <!-- PRODUK -->
+
+        <div class="products">
+
+            <!-- KOPI -->
+
+            <div class="product">
+
+                <div class="product-icon">☕</div>
+
+                <h3>Kopi</h3>
+
+                <div class="product-info">
+
+                    HPP:
+                    <b id="hppCoffee">Rp8.000</b>
+                    <br>
+
+                    Harga jual:
+                    <b id="priceCoffee">Rp12.000</b>
+                    <br>
+
+                    Stok:
+                    <b id="stockCoffee">0</b>
+
+                </div>
+
+                <button class="green-btn"
+                        onclick="produce('coffee')">
+
+                    🏭 Produksi Kopi
+
+                </button>
+
+            </div>
+
+
+            <!-- MIE -->
+
+            <div class="product">
+
+                <div class="product-icon">🍜</div>
+
+                <h3>Mie</h3>
+
+                <div class="product-info">
+
+                    HPP:
+                    <b id="hppNoodle">Rp10.000</b>
+                    <br>
+
+                    Harga jual:
+                    <b id="priceNoodle">Rp15.000</b>
+                    <br>
+
+                    Stok:
+                    <b id="stockNoodle">0</b>
+
+                </div>
+
+                <button class="green-btn"
+                        onclick="produce('noodle')">
+
+                    🏭 Produksi Mie
+
+                </button>
+
+            </div>
+
+
+            <!-- ROTI -->
+
+            <div class="product">
+
+                <div class="product-icon">🍞</div>
+
+                <h3>Roti</h3>
+
+                <div class="product-info">
+
+                    HPP:
+                    <b id="hppBread">Rp9.000</b>
+                    <br>
+
+                    Harga jual:
+                    <b id="priceBread">Rp14.000</b>
+                    <br>
+
+                    Stok:
+                    <b id="stockBread">0</b>
+
+                </div>
+
+                <button class="green-btn"
+                        onclick="produce('bread')">
+
+                    🏭 Produksi Roti
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             SUPPLIER
+        ========================= -->
+
+        <div class="supplier-section">
+
+            <div class="supplier-header">
+
+                <div>
+                    <h2>🚚 Supplier Bahan Baku</h2>
+
+                    <small>
+                        Pilih supplier berdasarkan harga dan waktu pengiriman.
+                    </small>
+                </div>
+
+                <div class="supplier-current">
+
+                    Supplier aktif:
+                    <span id="currentSupplier">
+                        Supplier A
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+            <button class="main-btn"
+                    onclick="openSupplierModal()">
+
+                🔄 GANTI SUPPLIER
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             INVENTORY
+        ========================= -->
+
+        <div class="inventory">
+
+            <h2>📦 Persediaan Bahan Baku</h2>
+
+            <br>
+
+            <table class="inventory-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Bahan</th>
+                        <th>Stok</th>
+                        <th>Harga Supplier</th>
+                        <th>Aksi</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr>
+
+                        <td>☕ Kopi</td>
+
+                        <td id="ingredientCoffee">
+                            0
+                        </td>
+
+                        <td>
+                            Rp10.000
+                        </td>
+
+                        <td>
+
+                            <button class="orange-btn"
+                                    onclick="buyIngredient('coffee')">
+
+                                🛒 Beli
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>🍚 Gula</td>
+
+                        <td id="ingredientSugar">
+                            0
+                        </td>
+
+                        <td>
+                            Rp5.000
+                        </td>
+
+                        <td>
+
+                            <button class="orange-btn"
+                                    onclick="buyIngredient('sugar')">
+
+                                🛒 Beli
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>💧 Air</td>
+
+                        <td id="ingredientWater">
+                            0
+                        </td>
+
+                        <td>
+                            Rp3.000
+                        </td>
+
+                        <td>
+
+                            <button class="orange-btn"
+                                    onclick="buyIngredient('water')">
+
+                                🛒 Beli
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>🌾 Tepung</td>
+
+                        <td id="ingredientFlour">
+                            0
+                        </td>
+
+                        <td>
+                            Rp7.000
+                        </td>
+
+                        <td>
+
+                            <button class="orange-btn"
+                                    onclick="buyIngredient('flour')">
+
+                                🛒 Beli
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>🥚 Telur</td>
+
+                        <td id="ingredientEgg">
+                            0
+                        </td>
+
+                        <td>
+                            Rp6.000
+                        </td>
+
+                        <td>
+
+                            <button class="orange-btn"
+                                    onclick="buyIngredient('egg')">
+
+                                🛒 Beli
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <!-- =========================
+             EVENT
+        ========================= -->
+
+        <div class="event-box">
+
+            <h3>📢 Kondisi Pasar</h3>
+
+            <p id="marketEvent">
+
+                Pasar normal.
+                Tentukan strategi bisnis kamu!
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     MODAL SUPPLIER
+========================= -->
+
+<div class="modal" id="supplierModal">
+
+    <div class="modal-content">
+
+        <div class="modal-title">
+
+            <h2>🚚 Pilih Supplier</h2>
+
+            <button class="close-btn"
+                    onclick="closeSupplierModal()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+
+        <p>
+            Kamu boleh mengganti supplier kapan saja.
+            <b>Barang yang sudah dibeli dari supplier sebelumnya
+            tidak dapat dibatalkan atau dikembalikan.</b>
+        </p>
+
+
+        <br>
+
+
+        <div class="suppliers">
+
+
+            <!-- SUPPLIER A -->
+
+            <div class="supplier active"
+                 id="supplierA">
+
+                <h4>🚚 Supplier A</h4>
+
+                <p>
+                    💰 Harga: Mahal<br>
+                    ⚡ Pengiriman: 1 hari<br>
+                    ⭐ Kecepatan: Tinggi
+                </p>
+
+                <button onclick="changeSupplier('Supplier A')">
+                    Pilih Supplier
+                </button>
+
+            </div>
+
+
+            <!-- SUPPLIER B -->
+
+            <div class="supplier"
+                 id="supplierB">
+
+                <h4>🚛 Supplier B</h4>
+
+                <p>
+                    💰 Harga: Murah<br>
+                    🐢 Pengiriman: 5 hari<br>
+                    ⭐ Kecepatan: Rendah
+                </p>
+
+                <button onclick="changeSupplier('Supplier B')">
+                    Pilih Supplier
+                </button>
+
+            </div>
+
+
+            <!-- SUPPLIER C -->
+
+            <div class="supplier"
+                 id="supplierC">
+
+                <h4>🚚 Supplier C</h4>
+
+                <p>
+                    💰 Harga: Sedang<br>
+                    ⏳ Pengiriman: 3 hari<br>
+                    ⭐ Kecepatan: Sedang
+                </p>
+
+                <button onclick="changeSupplier('Supplier C')">
+                    Pilih Supplier
+                </button>
+
+            </div>
+
+
+            <!-- SUPPLIER D -->
+
+            <div class="supplier"
+                 id="supplierD">
+
+                <h4>🚛 Supplier D</h4>
+
+                <p>
+                    💰 Harga: Sedang<br>
+                    ⚡ Pengiriman: 2 hari<br>
+                    ⭐ Kecepatan: Tinggi
+                </p>
+
+                <button onclick="changeSupplier('Supplier D')">
+                    Pilih Supplier
+                </button>
+
+            </div>
+
+
+            <!-- SUPPLIER E -->
+
+            <div class="supplier"
+                 id="supplierE">
+
+                <h4>💎 Supplier E</h4>
+
+                <p>
+                    💰 Harga: Sangat Murah<br>
+                    ⚡ Pengiriman: 1 hari<br>
+                    🎲 Ketersediaan: Terbatas
+                </p>
+
+                <button onclick="changeSupplier('Supplier E')">
+                    Pilih Supplier
+                </button>
+
+            </div>
+
+
+            <!-- SUPPLIER F -->
+
+            <div class="supplier"
+                 id="supplierF">
+
+                <h4>🚚 Supplier F</h4>
+
+                <p>
+                    💰 Harga: Sedang-Murah<br>
+                    ⏳ Pengiriman: 4 hari<br>
+                    ⭐ Kecepatan: Sedang
+                </p>
+
+                <button onclick="changeSupplier('Supplier F')">
+                    Pilih Supplier
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- NOTIFICATION -->
+
+<div class="notification"
+     id="notification">
+
+    Berhasil!
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   DATA GAME
+===================================================== */
+
+let saldo = 10000000;
+
+let reputasi = 50;
+
+let currentSupplier = "Supplier A";
+
+let stock = {
+
+    coffee: 0,
+    noodle: 0,
+    bread: 0
+
+};
+
+let ingredients = {
+
+    coffee: 0,
+    sugar: 0,
+    water: 0,
+    flour: 0,
+    egg: 0
+
+};
+
+let prices = {
+
+    coffee: 12000,
+    noodle: 15000,
+    bread: 14000
+
+};
+
+let hpp = {
+
+    coffee: 8000,
+    noodle: 10000,
+    bread: 9000
+
+};
+
+
+/* =====================================================
+   TIMER
+   TIMER DIBACA DARI ADMIN
+===================================================== */
+
+let timerSeconds = 360;
+
+function readAdminGameState() {
+
+    let savedStatus =
+        localStorage.getItem("gameStatus");
+
+    let savedTime =
+        localStorage.getItem("gameTime");
+
+    if (savedStatus) {
+
+        updateGameStatus(savedStatus);
+
+    }
+
+    if (savedTime !== null) {
+
+        timerSeconds =
+            parseInt(savedTime);
+
+    }
+
+    updateTimerDisplay();
+
+}
+
+
+function updateGameStatus(status) {
+
+    let statusBox =
+        document.getElementById("gameStatus");
+
+    if (status === "running") {
+
+        statusBox.innerHTML =
+            "🟢 GAME BERJALAN";
+
+        statusBox.style.background =
+            "#dcfce7";
+
+        statusBox.style.color =
+            "#166534";
+
+    }
+
+    else if (status === "paused") {
+
+        statusBox.innerHTML =
+            "⏸️ GAME DI-PAUSE";
+
+        statusBox.style.background =
+            "#fef3c7";
+
+        statusBox.style.color =
+            "#92400e";
+
+    }
+
+    else if (status === "stopped") {
+
+        statusBox.innerHTML =
+            "⛔ GAME SELESAI";
+
+        statusBox.style.background =
+            "#fee2e2";
+
+        statusBox.style.color =
+            "#991b1b";
+
+    }
+
+    else {
+
+        statusBox.innerHTML =
+            "⏸️ MENUNGGU ADMIN";
+
+    }
+
+}
+
+
+function updateTimerDisplay() {
+
+    let minutes =
+        Math.floor(timerSeconds / 60);
+
+    let seconds =
+        timerSeconds % 60;
+
+    document.getElementById("timer")
+        .innerText =
+        String(minutes).padStart(2,"0")
+        + ":" +
+        String(seconds).padStart(2,"0");
+
+}
+
+
+/*
+    Penjual TIDAK menjalankan timer sendiri.
+
+    Admin yang mengubah gameTime.
+
+    Penjual hanya membaca perubahan tersebut.
+*/
+
+setInterval(function() {
+
+    readAdminGameState();
+
+}, 500);
+
+
+/* =====================================================
+   SUPPLIER
+===================================================== */
+
+function openSupplierModal() {
+
+    document.getElementById(
+        "supplierModal"
+    ).style.display = "flex";
+
+}
+
+
+function closeSupplierModal() {
+
+    document.getElementById(
+        "supplierModal"
+    ).style.display = "none";
+
+}
+
+
+function changeSupplier(name) {
+
+    currentSupplier = name;
+
+    document.getElementById(
+        "currentSupplier"
+    ).innerText = name;
+
+    showNotification(
+        "🚚 Supplier berhasil diganti menjadi "
+        + name
+    );
+
+    closeSupplierModal();
+
+}
+
+
+/* =====================================================
+   BELI BAHAN
+===================================================== */
+
+function buyIngredient(type) {
+
+    let price = 0;
+    let name = "";
+
+    if (type === "coffee") {
+
+        price = 10000;
+        name = "Kopi";
+
+    }
+
+    if (type === "sugar") {
+
+        price = 5000;
+        name = "Gula";
+
+    }
+
+    if (type === "water") {
+
+        price = 3000;
+        name = "Air";
+
+    }
+
+    if (type === "flour") {
+
+        price = 7000;
+        name = "Tepung";
+
+    }
+
+    if (type === "egg") {
+
+        price = 6000;
+        name = "Telur";
+
+    }
+
+
+    if (saldo < price) {
+
+        showNotification(
+            "❌ Saldo tidak cukup!"
+        );
+
+        return;
+
+    }
+
+
+    saldo -= price;
+
+    ingredients[type]++;
+
+    updateDisplay();
+
+    showNotification(
+        "🛒 Membeli 1 bahan "
+        + name
+        + " dari "
+        + currentSupplier
+    );
+
+}
+
+
+/* =====================================================
+   PRODUKSI
+===================================================== */
+
+function produce(product) {
+
+    let canProduce = false;
+
+    if (product === "coffee") {
+
+        if (
+            ingredients.coffee >= 1 &&
+            ingredients.sugar >= 1 &&
+            ingredients.water >= 1
+        ) {
+
+            ingredients.coffee--;
+            ingredients.sugar--;
+            ingredients.water--;
+
+            canProduce = true;
+
+        }
+
+    }
+
+
+    if (product === "noodle") {
+
+        if (
+            ingredients.flour >= 1 &&
+            ingredients.egg >= 1 &&
+            ingredients.water >= 1
+        ) {
+
+            ingredients.flour--;
+            ingredients.egg--;
+            ingredients.water--;
+
+            canProduce = true;
+
+        }
+
+    }
+
+
+    if (product === "bread") {
+
+        if (
+            ingredients.flour >= 1 &&
+            ingredients.egg >= 1 &&
+            ingredients.sugar >= 1
+        ) {
+
+            ingredients.flour--;
+            ingredients.egg--;
+            ingredients.sugar--;
+
+            canProduce = true;
+
+        }
+
+    }
+
+
+    if (!canProduce) {
+
+        showNotification(
+            "❌ Bahan baku tidak cukup!"
+        );
+
+        return;
+
+    }
+
+
+    showNotification(
+        "🏭 Produksi sedang berlangsung..."
+    );
+
+
+    setTimeout(function() {
+
+        stock[product]++;
+
+        updateDisplay();
+
+        showNotification(
+            "✅ Produk berhasil dibuat!"
+        );
+
+    },1500);
+
+}
+
+
+/* =====================================================
+   UPDATE TAMPILAN
+===================================================== */
+
+function updateDisplay() {
+
+    document.getElementById("saldo")
+        .innerText =
+        rupiah(saldo);
+
+
+    document.getElementById("reputasi")
+        .innerText =
+        reputasi;
+
+
+    document.getElementById("reputasi2")
+        .innerText =
+        reputasi;
+
+
+    document.getElementById("stockCoffee")
+        .innerText =
+        stock.coffee;
+
+
+    document.getElementById("stockNoodle")
+        .innerText =
+        stock.noodle;
+
+
+    document.getElementById("stockBread")
+        .innerText =
+        stock.bread;
+
+
+    document.getElementById("ingredientCoffee")
+        .innerText =
+        ingredients.coffee;
+
+
+    document.getElementById("ingredientSugar")
+        .innerText =
+        ingredients.sugar;
+
+
+    document.getElementById("ingredientWater")
+        .innerText =
+        ingredients.water;
+
+
+    document.getElementById("ingredientFlour")
+        .innerText =
+        ingredients.flour;
+
+
+    document.getElementById("ingredientEgg")
+        .innerText =
+        ingredients.egg;
+
+
+    let total =
+        stock.coffee +
+        stock.noodle +
+        stock.bread;
+
+    document.getElementById("totalStock")
+        .innerText =
+        total;
+
+}
+
+
+/* =====================================================
+   FORMAT RUPIAH
+===================================================== */
+
+function rupiah(number) {
+
+    return new Intl.NumberFormat(
+        "id-ID",
+        {
+            style: "currency",
+            currency: "IDR",
+            maximumFractionDigits: 0
+        }
+    ).format(number);
+
+}
+
+
+/* =====================================================
+   NOTIFICATION
+===================================================== */
+
+function showNotification(message) {
+
+    let box =
+        document.getElementById(
+            "notification"
+        );
+
+    box.innerText = message;
+
+    box.style.display = "block";
+
+
+    setTimeout(function() {
+
+        box.style.display = "none";
+
+    },2500);
+
+}
+
+
+/* =====================================================
+   EVENT PASAR DARI ADMIN
+===================================================== */
+
+function readMarketEvent() {
+
+    let event =
+        localStorage.getItem(
+            "marketEvent"
+        );
+
+    if (event) {
+
+        document.getElementById(
+            "marketEvent"
+        ).innerText = event;
+
+    }
+
+}
+
+setInterval(
+    readMarketEvent,
+    1000
+);
+
+
+/* =====================================================
+   START
+===================================================== */
+
+updateDisplay();
+
+readAdminGameState();
+
+readMarketEvent();
+
+</script>
+
+</body>
+</html>
